@@ -7,6 +7,7 @@
 #= require underscore
 #= require gmaps/google
 
+
 @convert = (objects) ->
   array = []
 
@@ -19,16 +20,38 @@
 
   googleMap array
 
+
+calcRoute = ->
+  origin = new google.maps.LatLng(41.850033, -87.6500523)
+  destination = new google.maps.LatLng(42.850033, -85.6500523)
+  request =
+    origin: origin
+    destination: destination
+    travelMode: google.maps.TravelMode.BICYCLING
+
+  directionsService.route request, (response, status) ->
+    if status is google.maps.DirectionsStatus.OK
+      directionsDisplay.setDirections response
+    return
+
+  return
+directionsDisplay = new google.maps.DirectionsRenderer()
+directionsService = new google.maps.DirectionsService()
+
+calcRoute()
+
 @googleMap = (content) ->
   handler = Gmaps.build("Google")
   handler.buildMap
     provider: {}
     internal:
-      id: "map"
+      id: "bikemap"
   , ->
+    directionsDisplay.setMap handler.getMap()
     markers = handler.addMarkers(content)
     handler.bounds.extendWith markers
     handler.fitMapToBounds()
+    return
 
 $ ->
   $.ajax
