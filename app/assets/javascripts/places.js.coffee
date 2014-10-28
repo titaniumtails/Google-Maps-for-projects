@@ -10,14 +10,14 @@
 @convert = (objects) ->
   array = []
 
-for x in objects
-  pin =
-    lat: x.lat
-    lng: x.lng
-    infowindow: x.name
-  array.push pin
+  for x in objects
+    pin =
+      lat: x.lat
+      lng: x.lng
+      infowindow: x.name
+    array.push pin
 
-googleMap array
+  googleMap array
 
 @googleMap = (content) ->
   handler = Gmaps.build("Google")
