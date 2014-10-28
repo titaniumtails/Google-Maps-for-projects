@@ -34,4 +34,4 @@ $ ->
   $.ajax
     url: '/places.json'
   .done (data) ->
-    googleMap content
+    convert data
