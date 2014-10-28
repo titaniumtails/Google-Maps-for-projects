@@ -12,22 +12,25 @@ $ ->
   directionsService = new google.maps.DirectionsService()
 
 
-  @convert = (objects) ->
-    array = []
+  # @convert = (objects) ->
+  #   array = []
 
-    for x in objects
-      pin =
-        lat: x.lat
-        lng: x.lng
-        infowindow: x.name
-      array.push pin
+  #   for x in objects
+  #     pin =
+  #       lat: x.lat
+  #       lng: x.lng
+  #       infowindow: x.name
+  #     array.push pin
 
     # googleMap array
+ 
+  calcRoute = (start, end) ->
 
+    start = {lat: 22.266203, lng: 114.178266}
+    end = {lat: 22.2626188, lng: 114.1301186}
 
-  calcRoute = (ori, dest) ->
-    origin = new google.maps.LatLng(41.850033, -87.6500523)
-    destination = new google.maps.LatLng(42.850033, -85.6500523)
+    origin = new google.maps.LatLng start.lat, end.lng
+    destination = new google.maps.LatLng start.lat, end.lng
     request =
       origin: origin
       destination: destination
