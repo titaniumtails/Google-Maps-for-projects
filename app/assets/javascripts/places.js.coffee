@@ -30,11 +30,6 @@
     handler.bounds.extendWith markers
     handler.fitMapToBounds()
 
-content = [
-  {lat:22.2626188, lng: 114.1301186,infowindow: "hello!", link: 'a'},
-  {lat:22.3907897, lng: 114.2022941,infowindow: "hello!", link:'b'}
-]
-
 $ ->
   $.ajax
     url: '/places.json'
