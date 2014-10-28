@@ -1,6 +1,10 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
+  # GET /map
+    def map
+    end
+
   # GET /places
   # GET /places.json
   def index
